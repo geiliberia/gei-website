@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LeadershipSection } from "@/components/Leadership";
 import { Photo } from "@/components/Photo";
 import { images } from "@/lib/images";
 import { fieldReports } from "@/lib/projects";
@@ -164,9 +165,13 @@ export default function OurWork() {
               </ul>
             </section>
           )}
+
         </div>
       </div>
+  <section className="bg-forest text-white">
+           <LeadershipSection />
 
+      </section>
       <section className="border-t-4 border-sun bg-forest text-white">
         <div className="wrap flex flex-wrap items-center justify-between gap-6 py-12">
           <h2 className="max-w-xl !text-white">Want to work with us on any of this?</h2>
