@@ -1,0 +1,39 @@
+@import "@fontsource/zilla-slab/500.css";
+@import "@fontsource/zilla-slab/600.css";
+@import "@fontsource/zilla-slab/700.css";
+@import "@fontsource-variable/public-sans/index.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-paper font-sans text-[1.0625rem] leading-[1.65] text-ink antialiased; }
+  h1, h2, h3 { @apply font-display text-forest; text-wrap: balance; }
+  h1 { @apply text-[2.125rem] font-bold leading-[1.1] sm:text-5xl; }
+  h2 { @apply text-[1.75rem] font-semibold leading-[1.15] sm:text-[2.125rem]; }
+  h3 { @apply text-xl font-semibold leading-snug; }
+  p { text-wrap: pretty; }
+  a { @apply underline decoration-sun decoration-2 underline-offset-4; }
+  :focus-visible { @apply outline outline-[3px] outline-offset-2 outline-sun; }
+  ::selection { @apply bg-leaf/30; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
+  .btn { @apply inline-flex items-center justify-center rounded-sm px-5 py-3 text-base font-semibold no-underline transition-colors disabled:cursor-not-allowed disabled:opacity-60; }
+  .btn-sun { @apply btn bg-sun text-ink hover:bg-sun-soft; }
+  .btn-forest { @apply btn bg-forest text-white hover:bg-forest-deep; }
+  .btn-line { @apply btn border-2 border-white/70 text-white hover:bg-white/10; }
+  .field { @apply mt-1.5 block w-full rounded-sm border border-forest/40 bg-white px-3.5 py-2.5 text-ink placeholder:text-ink/45; }
+  .field[aria-invalid="true"] { @apply border-red-700; }
+}
+
+/* The one motion on the site: the hero arch rises into place once on load. */
+@keyframes rise { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+.arch-rise { animation: rise 900ms cubic-bezier(.2,.7,.2,1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .arch-rise { animation: none; }
+  html { scroll-behavior: auto; }
+}
