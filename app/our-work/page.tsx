@@ -17,6 +17,7 @@ const index = [
   ["cleanup", "Clean Up Liberia"],
   ["communities", "Communities and livelihoods"],
   ["conservation", "Wildlife and disaster response"],
+  ["gallery", "Work in the field"],
 ] as const;
 
 const steps = [
@@ -24,6 +25,15 @@ const steps = [
   ["Match the species", "Trees are chosen to suit the site, not the other way round."],
   ["Supply the seedlings", "Seedlings come from our own propagation centre."],
   ["Plant together", "Volunteers, schools and youth groups put the trees in the ground."],
+] as const;
+
+const galleryItems = [
+  { title: "Planting day", summary: "Young saplings go into the ground with schools, youth groups and local leaders.", img: images.fieldPlanting },
+  { title: "Shared stewardship", summary: "Communities plan, protect and care for restored land together.", img: images.fieldCommunity },
+  { title: "Watershed care", summary: "Tree cover helps hold soil, protect water and reduce climate risk.", img: images.fieldWatershed },
+  { title: "Livelihoods", summary: "Women and families build better income while restoring the environment.", img: images.fieldWomen },
+  { title: "Wildlife corridors", summary: "Habitat protection and species care keep ecosystems alive.", img: images.fieldWildlife },
+  { title: "Cleanup action", summary: "Neighbourhood clean-ups and safer public spaces build community pride.", img: images.fieldCleanupDay },
 ] as const;
 
 export default function OurWork() {
@@ -68,6 +78,31 @@ export default function OurWork() {
             </ol>
             <div className="mt-10 aspect-[16/9] overflow-hidden">
               <Photo img={images.restoration} sizes="(min-width: 1024px) 760px, 100vw" />
+            </div>
+          </section>
+
+          <section id="gallery" className="scroll-mt-8" aria-labelledby="gallery-title">
+            <div className="mb-6 flex items-end justify-between gap-4 border-b border-forest/20 pb-3">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.12em] text-forest/70">Field notes</p>
+                <h2 id="gallery-title" className="mt-2">Work in the field</h2>
+              </div>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              {galleryItems.map((item, index) => (
+                <article key={item.title} className={index % 2 === 0 ? "sm:translate-y-4" : ""}>
+                  <div className="group relative overflow-hidden bg-mist">
+                    <div className="aspect-[4/5] overflow-hidden">
+                      <Photo img={item.img} sizes="(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 100vw" className="transition duration-500 group-hover:scale-105" />
+                    </div>
+                    <div className="absolute inset-0 bg-forest/80 opacity-0 transition duration-300 group-hover:opacity-100" aria-hidden="true" />
+                    <div className="absolute inset-x-0 bottom-0 p-4 text-white opacity-0 transition duration-300 group-hover:opacity-100">
+                      <p className="font-display text-xl font-semibold">{item.title}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-white/85">{item.summary}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
             </div>
           </section>
 

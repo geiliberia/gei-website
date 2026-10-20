@@ -32,7 +32,7 @@ export function Header() {
   };
 
   return (
-    <header className="border-b border-forest/15 bg-white">
+    <header className="sticky top-0 z-50 border-b border-forest/15 bg-white/90 backdrop-blur-sm">
       <div className="wrap flex items-center justify-between gap-4 py-3">
         <Link href="/" className="flex items-center gap-3 no-underline" aria-label={`${site.name}, home`}>
           <Image src="/images/logo.jpg" alt="" width={56} height={43} priority className="h-11 w-auto" />
